@@ -9,8 +9,12 @@ from database import get_db
 import models
 
 
-# JWT Configuration
-SECRET_KEY = "abc121bbb1"
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
