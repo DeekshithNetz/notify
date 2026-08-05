@@ -33,8 +33,9 @@ def google_login(
         models.User.email == user.email
     ).first()
 
-
+  
     if not db_user:
+        print("new account ")
 
         db_user = models.User(
             google_id=user.google_id,
@@ -46,7 +47,7 @@ def google_login(
         db.commit()
         db.refresh(db_user)
 
-
+    print(db_user.role)
     access_token = auth.create_access_token(
         {
             "sub": str(db_user.id),

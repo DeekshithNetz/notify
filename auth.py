@@ -82,6 +82,10 @@ def get_current_user(
 def get_admin_user(
     current_user: models.User = Depends(get_current_user)
 ):
+    print("ID:", current_user.id)
+    print("Name:", current_user.name)
+    print("Email:", current_user.email)
+    print("Role:", current_user.role)
 
     if current_user.role != "admin":
         raise HTTPException(
